@@ -1,7 +1,16 @@
 import http from "./httpService";
 import { apiUrl } from "../config.json";
+import auth from "./authService";
 
 const apiEndpoint = apiUrl + "/articles";
+
+const token = auth.getJwt();
+var header = {
+  headers: {
+    Authorization: `Token ${token}`,
+    "content-type": "application/json",
+  },
+};
 
 function movieUrl(slug) {
   return `${apiEndpoint}/${slug}`;

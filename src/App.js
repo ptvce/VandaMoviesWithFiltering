@@ -18,10 +18,7 @@ class App extends Component {
       <React.Fragment>
         <ToastContainer />
         <NavBar />
-        <main
-          //className="container"
-          style={{ maxWidth: "100% important", justifyItems: "center" }}
-        >
+        <main className="container">
           <Switch>
             <Route path="/register" component={RegisterForm} />
             <Route path="/login" component={LoginForm} />
