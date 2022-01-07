@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import MoviesTable from "./moviesTable";
 import ListGroup from "./common/listGroup";
 import Pagination from "./common/pagination";
-import { getMovies, deleteMovie } from "../services/fakeMovieService";
-import { getGenres } from "../services/fakeGenreService";
+import { getMovies, deleteMovie } from "../services/movieService";
+import { getGenres } from "../services/genreService";
 import { paginate } from "../utils/paginate";
 import _ from "lodash";
 import SearchBox from "./searchBox";
@@ -20,24 +20,32 @@ class Movies extends Component {
     sortColumn: { path: "title", order: "asc" }
   };
 
-  componentDidMount() {
-    const genres = [{ _id: "", name: "All Genres" }, ...getGenres()];
+  async componentDidMount() {
+    
+    const {data} = await getGenres();
+    const genres = [{ _id: "", name: "All Genres" }];
 
-    this.setState({ movies: getMovies(), genres });
+    for(let i=0; i<=data.tags.length;i++)
+    {
+      genres.push({ _id: i, name: data.tags[i] });
+    }
+    const {data: movies}  = await getMovies(); 
+    this.setState({ movies: movies.articles , genres });
   }
 
-  handleDelete = movie => {
-    const movies = this.state.movies.filter(m => m._id !== movie._id);
+  handleDelete = async movie => {
+    const originalMovies = this.state.movies;
+    const movies = originalMovies.filter(m => m.slug !== movie.slug);
     this.setState({ movies });
 
-    deleteMovie(movie._id);
+    await deleteMovie(movie.slug);
   };
 
   handleLike = movie => {
     const movies = [...this.state.movies];
     const index = movies.indexOf(movie);
     movies[index] = { ...movies[index] };
-    movies[index].liked = !movies[index].liked;
+    movies[index].favorited = !movies[index].favorited;
     this.setState({ movies });
   };
 
@@ -68,13 +76,19 @@ class Movies extends Component {
     } = this.state;
 
     let filtered = allMovies;
-    if (searchQuery)
+    if (searchQuery !== "")
+    {
       filtered = allMovies.filter(m =>
         m.title.toLowerCase().startsWith(searchQuery.toLowerCase())
       );
+    }
     else if (selectedGenre && selectedGenre._id)
-      filtered = allMovies.filter(m => m.genre._id === selectedGenre._id);
-
+    {
+      const nestedArray = allMovies.map((element) => {
+        return {...element, subElements: element.tagList.filter((subElement) => subElement === selectedGenre.name)};
+      });
+      filtered = nestedArray.filter((v) => v.subElements.length != 0);
+    }
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
 
     const movies = paginate(sorted, currentPage, pageSize);
@@ -89,7 +103,6 @@ class Movies extends Component {
     if (count === 0) return <p>There are no movies in the database.</p>;
 
     const { totalCount, data: movies } = this.getPagedData();
-
     return (
       <div className="row">
         <div className="col-3">
