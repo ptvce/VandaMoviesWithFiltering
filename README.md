@@ -11,7 +11,7 @@
 
 <img src="https://github.com/ptvce/VandaMoviesWithFiltering/blob/master/assets/img/rec2.gif">
 
-![screenshot](Rec.gif)
+![screenshot](https://github.com/ptvce/VandaMoviesWithFiltering/blob/master/assets/img/rec2.gif)
 
 ## Key Features
 
