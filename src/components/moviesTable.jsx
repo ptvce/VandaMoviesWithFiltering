@@ -3,8 +3,33 @@ import { Link } from "react-router-dom";
 import Table from "./common/table";
 import Like from "./common/like";
 import Label from "./common/label";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 class MoviesTable extends Component {
+  commitChanges = ( movie ) => {
+    confirmAlert({
+      title: "Delete Article",
+      message: "Are you sure to delete Article?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => {
+            if (movie) {
+              //const index = deleted[0];
+             // this.deleteArticles(index);
+              this.props.onDelete(movie)
+            }
+          },
+        },
+        {
+          label: "No",
+          onClick: () => "Click No",
+        },
+      ],
+    });
+  };
+
   columns = [
     {
       path: "title",
@@ -20,7 +45,6 @@ class MoviesTable extends Component {
     },
     { path: "author.username", label: "Author" },
     { path: "slug", label: "Slug" },
-    { path: "favoritesCount", label: "FavoritesCount" },
     {
       key: "favorited",
       content: movie => (
@@ -31,7 +55,8 @@ class MoviesTable extends Component {
       key: "delete",
       content: movie => (
         <button
-          onClick={() => this.props.onDelete(movie)}
+          // onClick={() => this.props.onDelete(movie)}
+          onClick={() => this.commitChanges(movie)}
           className="btn btn-danger btn-sm"
         >
           Delete
@@ -42,7 +67,7 @@ class MoviesTable extends Component {
 
   render() {
     const { movies, onSort, sortColumn } = this.props;
-
+    
     return (
       <Table
         columns={this.columns}

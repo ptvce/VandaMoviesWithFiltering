@@ -1,14 +1,31 @@
 import React from "react";
 
-const Customers = () => {
+const About = () => {
   return (<div className="container mx-auto flex flex-col items-center md:w-9/12">
   <h1 className="text-2xl text-teal-600 mb-2">Pari Vandaei</h1>
-  <p className="text-sm">Unit 5085 NSW</p>
   <p className="text-sm">
-    Mobile: <a href="call:">044000000</a> Email:
+     Email:
     <a href="../index.html">
       pari.t.vanda@gmail.com
     </a>
+    <h4 className="w-full text-lg text-teal-500">Links</h4>
+  <div className="container mx-auto flex flex-col items-start pl-8">
+    <a href="https://github.com/ptvce" className="text-blue-400">
+      Github|  
+    </a>
+    <a
+      href="https://www.linkedin.com/in/parivandaei/" target="_blank"
+      className="text-blue-400"
+    >
+       Linkedin|
+    </a>
+    <a
+      href="https://ptvce.github.io/Me/" target="_blank"
+      className="text-blue-400"
+    >
+       Me
+    </a>
+  </div>
   </p>
 
   <br />
@@ -111,22 +128,23 @@ const Customers = () => {
   <br />
 
 
-  <h4 className="w-full text-lg text-teal-500">Links</h4>
-  <div className="container mx-auto flex flex-col items-start pl-8">
-    <a href="https://github.com/ptvce" className="text-blue-400">
-      Github|  
-    </a>
-    <a
-      href="https://www.linkedin.com/in/parivandaei/" target="_blank"
-      className="text-blue-400"
-    >
-       Linkedin
-    </a>
-  </div>
+  
   <br />
   <h4 className="w-full text-lg text-teal-500">Last Projects</h4>
   <div className="container mx-auto flex flex-col items-start pl-8">
   <ul className="list-disc pl-5">
+      <li>
+      Terminal
+      </li>
+      <li>
+      RamzArz
+      </li>
+      <li>
+      Pay Slip MAnagement
+      </li>
+      <li>
+      Guardzila
+      </li>
       <li>
       GRC Management
       </li>
@@ -148,14 +166,12 @@ const Customers = () => {
       <li>
       Evaluation
       </li>
-      <li>
-      GRC Management
-      </li>
+      
   </ul>
   </div>
 </div>);
 };
 
-export default Customers;
+export default About;
 
 

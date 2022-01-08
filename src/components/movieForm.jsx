@@ -1,8 +1,11 @@
 import React from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
-import { getMovie, saveMovie } from "../services/movieService";
+import { getMovieByMovieId, saveMovie } from "../services/movieService";
 import { getGenres } from "../services/genreService";
+import {  toast } from 'react-toastify';
+import { loadProgressBar } from 'axios-progress-bar';
+import 'axios-progress-bar/dist/nprogress.css';
 
 class MovieForm extends Form {
   state = {
@@ -23,7 +26,7 @@ class MovieForm extends Form {
       .label("Title"),
     tags: Joi.string()
        .required()
-       .label("Genre"),
+       .label("Tag"),
     description: Joi.string()
       .required()
        .min(0)
@@ -50,7 +53,7 @@ class MovieForm extends Form {
     const movieId = this.props.match.params.slug;
      if (movieId === "new") return;
 
-     const {data: movie} = getMovie(movieId);
+     const {data: movie} = getMovieByMovieId(movieId);
      if (!movie) return this.props.history.replace("/not-found");
 
     this.setState({ data: this.mapToViewModel(movie) });
@@ -70,9 +73,20 @@ class MovieForm extends Form {
     };
   }
 
-  doSubmit = () => {
+  doSubmit = async () => {
 
-    saveMovie(this.state.data);
+    try {
+      loadProgressBar()
+      const { data } = this.state;
+      await saveMovie(data);
+      toast.success("Movie added successful")
+    } catch (ex) {
+      if (ex.response && ex.response.status === 422) {
+        Object.keys(ex.response.data.errors).forEach((key) => {
+          toast.error(ex.response.data.errors[key][0]);
+        });
+      }
+    }
 
     this.props.history.push("/movies");
   };

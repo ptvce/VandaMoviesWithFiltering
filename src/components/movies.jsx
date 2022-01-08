@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import MoviesTable from "./moviesTable";
 import ListGroup from "./common/listGroup";
 import Pagination from "./common/pagination";
-import { getMovies, deleteMovie } from "../services/movieService";
+import { deleteMovie, getMoviesByUser } from "../services/movieService";
+import auth from "../services/authService";
 import { getGenres } from "../services/genreService";
 import { paginate } from "../utils/paginate";
 import _ from "lodash";
@@ -21,18 +22,21 @@ class Movies extends Component {
   };
 
   async componentDidMount() {
-    
+
+    const currentUser = auth.getCurrentUser();
+    const user = currentUser.username;
+
     const {data} = await getGenres();
-    const genres = [{ _id: "", name: "All Genres" }];
+    const genres = [{ _id: "", name: "All Tags" }];
 
     for(let i=0; i<=data.tags.length;i++)
     {
       genres.push({ _id: i, name: data.tags[i] });
     }
-    const {data: movies}  = await getMovies(); 
+    const {data: movies}  = await getMoviesByUser(user); 
     this.setState({ movies: movies.articles , genres });
   }
-
+ 
   handleDelete = async movie => {
     const originalMovies = this.state.movies;
     const movies = originalMovies.filter(m => m.slug !== movie.slug);
@@ -82,7 +86,7 @@ class Movies extends Component {
         m.title.toLowerCase().startsWith(searchQuery.toLowerCase())
       );
     }
-    else if (selectedGenre && selectedGenre._id)
+    else if (selectedGenre && selectedGenre._id !== "")
     {
       const nestedArray = allMovies.map((element) => {
         return {...element, subElements: element.tagList.filter((subElement) => subElement === selectedGenre.name)};

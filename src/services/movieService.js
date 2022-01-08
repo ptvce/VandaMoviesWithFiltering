@@ -20,8 +20,13 @@ export function getMovies() {
   return http.get(apiEndpoint);
 }
 
-export function getMovie(movieId) {
-  return http.get(movieUrl(movieId));
+export function getMoviesByUser(user) {
+  const url = `${apiUrl}/articles?author=${user}`;
+  return http.get(url, header);
+}
+
+export function getMovieByMovieId(slug) {
+  return http.get(movieUrl(slug));
 }
 
 export function saveMovie(movie) {
@@ -37,9 +42,9 @@ export function saveMovie(movie) {
     delete body._id;
     return http.put(movieUrl(movie._id), body);
   }
-  return http.post(apiEndpoint, request);
+  return http.post(apiEndpoint, request, header);
 }
 
 export function deleteMovie(slug) {
-  return http.delete(movieUrl(slug));
+  return http.delete(movieUrl(slug), header);
 }
