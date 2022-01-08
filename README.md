@@ -9,7 +9,7 @@
   <a href="#You-may-also-like">You may also like</a> •
 </p>
 
-<img src="https://github.com/ptvce/VandaMoviesWithFiltering/blob/master/assets/img/rec2.gif">
+[<img src="https://github.com/ptvce/VandaMoviesWithFiltering/blob/master/assets/img/rec2.gif">](url)
 
 ![screenshot](https://github.com/ptvce/VandaMoviesWithFiltering/blob/master/assets/img/rec2.gif)
 
