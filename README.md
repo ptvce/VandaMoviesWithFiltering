@@ -8,8 +8,7 @@
   <a href="#how-to-use">How To Use</a> •
   <a href="#You-may-also-like">You may also like</a> •
 </p>
-
-[<img src="https://github.com/ptvce/VandaMoviesWithFiltering/blob/master/assets/img/rec2.gif">](url)
+<br />
 
 ![screenshot](https://github.com/ptvce/VandaMoviesWithFiltering/blob/master/assets/img/rec2.gif)
 
