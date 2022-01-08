@@ -1,40 +1,90 @@
 <img src="icon.png" align="right" />
 
-# Awesome README [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome#readme)
-> A curated list of awesome READMEs
 
-Elements in beautiful READMEs include, but are not limited to: images, screenshots, GIFs, text formatting, etc.
+<h1 align="center">
+  <br>
+  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.png" alt="Markdownify" width="200"></a>
+  <br>
+  Markdownify
+  <br>
+</h1>
 
-## Examples
+<h4 align="center">A minimal Markdown Editor desktop app built on top of <a href="http://electron.atom.io" target="_blank">Electron</a>.</h4>
 
-## Articles
+<p align="center">
+  <a href="https://badge.fury.io/js/electron-markdownify">
+    <img src="https://badge.fury.io/js/electron-markdownify.svg"
+         alt="Gitter">
+  </a>
+  <a href="https://gitter.im/amitmerchant1990/electron-markdownify"><img src="https://badges.gitter.im/amitmerchant1990/electron-markdownify.svg"></a>
+  <a href="https://saythanks.io/to/bullredeyes@gmail.com">
+      <img src="https://img.shields.io/badge/SayThanks.io-%E2%98%BC-1EAEDB.svg">
+  </a>
+  <a href="https://www.paypal.me/AmitMerchant">
+    <img src="https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&amp;style=flat">
+  </a>
+</p>
 
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#how-to-use">How To Use</a> •
+  <a href="#You-may-also-like">You may also like</a> •
+</p>
 
-## Tools
+![screenshot](https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.gif)
 
+## Key Features
 
-## Creating GIFs
+* Skills:
+  - Html, Css, Bootstrap, Javascript, React, Redux, Error handling, Validation, Axios, JWT
+  
+* API:
+  - Free
+  
+* Featurs:
+  - Display, Insert, Delete, Filter, Search, Sort, Pagination 
+ 
+* Components:
+  - Login
+  - Logout
+  - Register
+  - Label
+  - Input
+  - Select
+  - Button
+  - List
+  - Form
+  - Table Header
+  - Table Body
+  - Table
+  - Pagination
+  - Like
+  - NavBar
+  - SearchBox
+  
+* Cross platform
+  - Windows, macOS and Linux ready.
 
-Embedding an animated gif in your README quickly demonstrates what your project does and catches the reader's eye. Here are a few programs that can help you quickly create gifs for your project:
+## How To Use
 
-- [Gifox](https://gifox.io) - **$14.99** - Cleanest UI, hotkeys, lots of advanced features
-- [Gifski](https://github.com/sindresorhus/Gifski#readme) - **FREE** - More vivid colors than the rest, but still keep size low
-- [Giphy Capture](https://giphy.com/apps/giphycapture) - **FREE** - Easy to upload to giphy.com, slightly annoying UX.
-- [LICEcap](https://www.cockos.com/licecap/) - **FREE** - Less intuitive, more features
-- [Peek](https://github.com/phw/peek#readme) - **FREE** - Simple and easy to use for Linux users.
-- [Recordit](https://recordit.co/) - **FREE** - Simple, clean UI, but auto-uploads to [recordit.co](https://recordit.co/)
-- [ScreenToGif](https://github.com/NickeManarin/ScreenToGif/) - **FREE** - Open source, customizable UI and easily editable GIFs, easy to get started.
-- [terminalizer](https://github.com/faressoft/terminalizer) - **FREE** - Record your terminal and generate animated gif images or share a web player
-- [ttystudio](https://github.com/chjj/ttystudio#readme) - **FREE** - For commandline tools, a terminal-to-gif recorder minus the headaches.
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
-## Get Feedback
+```bash
+# Clone this repository
+$ git clone https://github.com/ptvce/VandaMoviesWithFiltering.git
 
-- [feedmereadmes](https://github.com/LappleApple/feedmereadmes#readme) - Free README editing+feedback to make your open-source projects grow. See the README maturity model to help you keep going.
-- [maintainer.io](https://maintainer.io/) - Free README standardization and feedback, if you click on 'Book an audit'.
-- This repository. Submit a PR with your README!
+# Go into the repository
+$ cd VandaMoviesWithFiltering
 
-## Contribute
+# Install dependencies
+$ npm install
 
-Contributions are always welcome!
-Please read the [contribution guidelines](contributing.md) first.
+# Run the app
+$ npm start
+```
+
+## You may also like...
+
+- [Pomolectron](https://github.com/amitmerchant1990/pomolectron) - A pomodoro app
+- [Correo](https://github.com/amitmerchant1990/correo) - A menubar/taskbar Gmail App for Windows and macOS
 
