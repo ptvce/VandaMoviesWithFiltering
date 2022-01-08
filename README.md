@@ -9,13 +9,13 @@
   <a href="#You-may-also-like">You may also like</a> •
 </p>
 
-<img src="screen.png" align="center" />
+<img src="Rec.gif" align="center" />
 
 ![screenshot](Rec.gif)
 
 ## Key Features
 
-* Skills:
+* Skills required:
   - Html, Css, Bootstrap, Javascript, React, Redux, Error handling, Validation, Axios, JWT
   
 * API:
