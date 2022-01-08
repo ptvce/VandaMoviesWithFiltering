@@ -8,10 +8,9 @@
   <a href="#how-to-use">How To Use</a> •
   <a href="#You-may-also-like">You may also like</a> •
 </p>
+<br />
 
-<img src="https://github.com/ptvce/VandaMoviesWithFiltering/blob/master/assets/img/Rec.gif" width=40%>
-
-![screenshot](Rec.gif)
+![screenshot](https://github.com/ptvce/VandaMoviesWithFiltering/blob/master/assets/img/rec2.gif)
 
 ## Key Features
 
