@@ -1,4 +1,4 @@
-<img src="../assets/img/icon.png" align="right" />
+<img src="./assets/img/icon.png" align="right" />
 
 <h4 align="center">A minimal Store for keeping your data <a href="http://electron.atom.io" target="_blank">Vanda</a>.</h4>
 
@@ -9,7 +9,7 @@
   <a href="#You-may-also-like">You may also like</a> •
 </p>
 
-<img src="../assets/img/screen.png" align="right" />
+<img src="./assets/img/screen.png" align="right" />
 
 ![screenshot](https://github.com/ptvce/VandaMoviesWithFiltering/assets/img/Rec.gif)
 
