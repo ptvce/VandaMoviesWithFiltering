@@ -9,7 +9,7 @@
   <a href="#You-may-also-like">You may also like</a> •
 </p>
 
-![screenshot](https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.gif)
+![screenshot](https://github.com/ptvce/VandaMoviesWithFiltering/assets/img/Rec.gif)
 
 ## Key Features
 
