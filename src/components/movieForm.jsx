@@ -30,12 +30,12 @@ class MovieForm extends Form {
     description: Joi.string()
       .required()
        .min(0)
-       .max(100)
+       .max(50)
       .label("Number in Stock"),
     body: Joi.string()
       .required()
        .min(0)
-       .max(10)
+       .max(100)
       .label("Daily Rental Rate")
   };
 
@@ -98,8 +98,8 @@ class MovieForm extends Form {
         <form onSubmit={this.handleSubmit}>
           {this.renderInput("title", "Title")}
           {this.renderSelect("tags", "Tags", this.state.genres)}
-          {this.renderInput("description", "Description", "text")}
-          {this.renderInput("body", "Body")}
+          {this.renderInput("description", "Director", "text")}
+          {this.renderInput("body", "Description")}
           {this.renderButton("Save")}
         </form>
       </div>

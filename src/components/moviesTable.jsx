@@ -16,8 +16,6 @@ class MoviesTable extends Component {
           label: "Yes",
           onClick: () => {
             if (movie) {
-              //const index = deleted[0];
-             // this.deleteArticles(index);
               this.props.onDelete(movie)
             }
           },
@@ -55,7 +53,6 @@ class MoviesTable extends Component {
       key: "delete",
       content: movie => (
         <button
-          // onClick={() => this.props.onDelete(movie)}
           onClick={() => this.commitChanges(movie)}
           className="btn btn-danger btn-sm"
         >
