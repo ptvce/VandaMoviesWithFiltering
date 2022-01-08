@@ -9,7 +9,7 @@
   <a href="#You-may-also-like">You may also like</a> •
 </p>
 
-<img src="Rec.gif" align="center" width="500" height="600"/>
+<img src="Rec.gif" align="center" width="300" height="200"/>
 
 ![screenshot](Rec.gif)
 
