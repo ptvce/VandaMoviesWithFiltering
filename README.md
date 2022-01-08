@@ -64,6 +64,6 @@ $ npm start
 
 ## You may also like...
 
-- [Pomolectron](https://ptvce.github.io/InventoryProfit/) - Inventory Profit
-- [Correo](https://ptvce.github.io/ExchangeRateApp/) - Exchange Rate Mobile App
+- [Inventory Profit](https://ptvce.github.io/InventoryProfit/)
+- [Exchange Rate Mobile App](https://ptvce.github.io/ExchangeRateApp/)
 
