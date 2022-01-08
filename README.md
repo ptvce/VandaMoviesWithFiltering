@@ -9,7 +9,7 @@
   <a href="#You-may-also-like">You may also like</a> •
 </p>
 
-<img src="Rec.gif" align="center" />
+<img src="Rec.gif" align="center" srcset="elva-fairy-480w.jpg 480w, elva-fairy-800w.jpg 800w" sizes="(max-width: 600px) 480px, 800px"/>
 
 ![screenshot](Rec.gif)
 
