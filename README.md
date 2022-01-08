@@ -9,7 +9,7 @@
   <a href="#You-may-also-like">You may also like</a> •
 </p>
 
-<img src="Rec.gif" align="center" width="300" height="200"/>
+<img src="https://github.com/ptvce/VandaMoviesWithFiltering/Rec.gif" width=40%>
 
 ![screenshot](Rec.gif)
 
