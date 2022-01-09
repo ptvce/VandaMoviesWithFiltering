@@ -29,7 +29,6 @@ class RegisterForm extends Form {
 
   doSubmit = async () => {
     try {
-      loadProgressBar()
       const data = { ...this.state.data };
       this.setState({ data });
       const response = await authService.register(this.state.data);

@@ -33,7 +33,10 @@ class App extends Component {
             <Route path="/login" component={LoginForm} />
             <Route path="/logout" component={LogoutForm} />
             <Route path="/movies/:slug" component={MovieForm} />
-            <Route path="/movies" component={Movies} />
+            <Route
+              path="/movies"
+              render={(props) => <Movies {...props} user={this.state.user} />}
+            />
             <Route path="/about" component={About} />
             <Route path="/not-found" component={NotFound} />
             <Redirect from="/" exact to="/movies" />

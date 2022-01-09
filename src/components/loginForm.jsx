@@ -25,11 +25,10 @@ class LoginForm extends Form {
 
   doSubmit = async () => {
     try {
-      loadProgressBar()
       const { data } = this.state;
       await auth.login(data.email, data.password);
       const { state } = this.props.location;
-     window.location = state ? state.from.pathname : '/'; //ارسال کاربر به صفحه ای که ازش اومده
+     window.location = state ? state.from.pathname : '/';
     } catch (ex) {
       if (ex.response && ex.response.status === 422) {
         Object.keys(ex.response.data.errors).forEach(key => {

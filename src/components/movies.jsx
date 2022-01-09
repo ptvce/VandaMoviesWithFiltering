@@ -9,6 +9,7 @@ import { getGenres } from "../services/genreService";
 import { paginate } from "../utils/paginate";
 import _ from "lodash";
 import SearchBox from "./searchBox";
+import { Redirect } from "react-router-dom";
 
 class Movies extends Component {
   state = {
@@ -24,6 +25,11 @@ class Movies extends Component {
   async componentDidMount() {
 
     const currentUser = auth.getCurrentUser();
+    if (currentUser === null)
+    {
+        this.props.history.push("/login");
+        return;
+    }
     const user = currentUser.username;
 
     const {data} = await getGenres();

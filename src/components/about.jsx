@@ -94,42 +94,6 @@ const About = () => {
   </div>
 
   <br />
-
-  <h4 className="w-full text-lg text-teal-500">Educations</h4>
-
-  <div className="container mx-auto flex flex-col items-start pl-8">
-    <p className="font-hairline text-gray-600">03/2015</p>
-    <p className="font-thin text-gray-700">
-      <b className="italic font-bold">
-        <span className="text-teal-600">Master of Science</span>
-        Software Engineer
-      </b>
-    </p>
-    <p className="font-thin text-gray-700">
-      University Shahid Beheshti
-    </p>
-  </div>
-
-  <br />
-
-  <div className="container mx-auto flex flex-col items-start pl-8">
-    <p className="font-hairline text-gray-600">02/2004</p>
-    <p className="font-thin text-gray-700">
-      <b className="italic font-bold">
-        <span className="text-teal-600">Bachelor of Science</span>
-        Software Engineer
-      </b>
-    </p>
-    <p className="font-thin text-gray-700">
-      Azad University
-    </p>
-  </div>
-
-  <br />
-
-
-  
-  <br />
   <h4 className="w-full text-lg text-teal-500">Last Projects</h4>
   <div className="container mx-auto flex flex-col items-start pl-8">
   <ul className="list-disc pl-5">
@@ -169,7 +133,38 @@ const About = () => {
       
   </ul>
   </div>
-</div>);
+  <br />
+
+  <h4 className="w-full text-lg text-teal-500">Educations</h4>
+
+  <div className="container mx-auto flex flex-col items-start pl-8">
+    <p className="font-hairline text-gray-600">03/2015</p>
+    <p className="font-thin text-gray-700">
+      <b className="italic font-bold">
+        <span className="text-teal-600">Master of Science</span>
+        Software Engineer
+      </b>
+    </p>
+    <p className="font-thin text-gray-700">
+      University Shahid Beheshti
+    </p>
+  </div>
+
+  <br />
+
+  <div className="container mx-auto flex flex-col items-start pl-8">
+    <p className="font-hairline text-gray-600">02/2004</p>
+    <p className="font-thin text-gray-700">
+      <b className="italic font-bold">
+        <span className="text-teal-600">Bachelor of Science</span>
+        Software Engineer
+      </b>
+    </p>
+    <p className="font-thin text-gray-700">
+      Azad University
+    </p>
+  </div>
+ </div>);
 };
 
 export default About;

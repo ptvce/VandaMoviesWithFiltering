@@ -16,13 +16,17 @@ function movieUrl(slug) {
   return `${apiEndpoint}/${slug}`;
 }
 
+function movieUrlWithUser(user) {
+  return `${apiEndpoint}/?author=${user}`;
+}
+
 export function getMovies() {
   return http.get(apiEndpoint);
 }
 
 export function getMoviesByUser(user) {
   const url = `${apiUrl}/articles?author=${user}`;
-  return http.get(url, header);
+  return http.get(movieUrlWithUser(user), header);
 }
 
 export function getMovieByMovieId(slug) {
