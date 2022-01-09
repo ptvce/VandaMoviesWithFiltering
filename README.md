@@ -64,6 +64,6 @@ $ npm start
 
 ## You may also like...
 
-- [Pomolectron](https://github.com/amitmerchant1990/pomolectron) - A pomodoro app
-- [Correo](https://github.com/amitmerchant1990/correo) - A menubar/taskbar Gmail App for Windows and macOS
+- [Inventory Profit](https://ptvce.github.io/InventoryProfit/)
+- [Exchange Rate Mobile App](https://ptvce.github.io/ExchangeRateApp/)
 
