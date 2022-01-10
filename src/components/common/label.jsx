@@ -2,11 +2,12 @@ import React from "react";
 
 const Label = ({ text }) => {
   return (
-    <div className="form-group">
-      { text.map((tag) => (
-             <div key={tag} >{tag}</div>
-           ))} 
+    <div className="form-group" id="text">
+      {text.map((tag) => (
+             <div className="item" key={tag} >{tag}</div>
+           ))}
     </div>
+    
   );
  
 };
