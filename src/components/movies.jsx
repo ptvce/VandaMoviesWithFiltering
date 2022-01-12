@@ -9,7 +9,7 @@ import { getGenres } from "../services/genreService";
 import { paginate } from "../utils/paginate";
 import _ from "lodash";
 import SearchBox from "./searchBox";
-import { Redirect } from "react-router-dom";
+import { checkPropTypes } from "prop-types";
 
 class Movies extends Component {
   state = {
@@ -21,9 +21,10 @@ class Movies extends Component {
     selectedGenre: null,
     sortColumn: { path: "title", order: "asc" }
   };
+ 
+  
 
   async componentDidMount() {
-
     const currentUser = auth.getCurrentUser();
     if (currentUser === null)
     {

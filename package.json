@@ -16,14 +16,18 @@
     "joi-browser": "^13.4.0",
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.10",
+    "moment": "^2.29.1",
     "prop-types": "^15.6.2",
     "react": "^16.2.0",
     "react-confirm-alert": "^2.7.0",
     "react-dom": "^16.4.1",
+    "react-redux": "^7.2.6",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "react-test-renderer": "^16.2.0",
     "react-toastify": "^4.1.0",
+    "redux": "^4.1.2",
+    "reselect": "^4.1.5",
     "styled-components": "^5.3.3"
   },
   "scripts": {
@@ -40,5 +44,17 @@
     "@types/jest": "^27.4.0",
     "babel-jest": "^27.4.6",
     "jest": "^27.4.7"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
