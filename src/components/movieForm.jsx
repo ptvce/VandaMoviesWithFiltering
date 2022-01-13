@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Joi from "joi-browser";
-import Form from "./common/form";
 import { getMovieByMovieId, saveMovie } from "../services/movieService";
 import { getGenres } from "../services/genreService";
 import {  toast } from 'react-toastify';
-import { loadProgressBar } from 'axios-progress-bar';
 import 'axios-progress-bar/dist/nprogress.css';
+import Input from "./common/input";
+import Select from "./common/select";
 
-class MovieForm extends Form {
-  state = {
+function MovieForm (props) {
+
+  const [state,setState] = useState({
     data: {
       title: "",
       tags: "",
@@ -17,9 +18,9 @@ class MovieForm extends Form {
     },
     genres: [],
     errors: {}
-  };
+  });
 
-  schema = {
+  const schema = {
     title: Joi.string()
       .required()
       .label("Title"),
@@ -38,31 +39,37 @@ class MovieForm extends Form {
       .label("Daily Rental Rate")
   };
 
-  async populateGenres() {
+  const populateGenres = async () => {
     const {data} = await getGenres();
     const data2 = [];
     for(let i=0; i<data.tags.length;i++)
     {
       data2.push({ _id: i, name: data.tags[i] });
     }
-    this.setState({ genres: data2 });
-
+    setState({ genres: data2,
+      data: state.data,
+      errors: state.errors
+    });
   }
-  async populateMovie(){
-    const movieId = this.props.match.params.slug;
+  const populateMovie = async () => {
+    const movieId = props.match.params.slug;
      if (movieId === "new") return;
 
-     const {data: movie} = getMovieByMovieId(movieId);
-     if (!movie) return this.props.history.replace("/not-found");
+     const {data: movie} = await getMovieByMovieId(movieId);
+     if (!movie) return props.history.replace("/not-found");
 
-    this.setState({ data: this.mapToViewModel(movie) });
+    setState({ data: mapToViewModel(movie) ,
+      genres: state.genres,
+      errors: state.errors
+    });
   }
-  async componentDidMount() {
-    await this.populateGenres();
-    await this.populateMovie(); 
-  }
+  
+  useEffect(() => {
+     populateGenres();
+     populateMovie(); 
+  },[]);
 
-  mapToViewModel(movie) {
+  const mapToViewModel = (movie) => {
     return {
       title: movie.title,
       //tags: movie.tags._id,
@@ -71,11 +78,9 @@ class MovieForm extends Form {
     };
   }
 
-  doSubmit = async () => {
-
+  const doSubmit = async () => {
     try {
-      loadProgressBar()
-      const { data } = this.state;
+      const { data } = state;
       await saveMovie(data);
       toast.success("Movie added successful")
     } catch (ex) {
@@ -86,23 +91,104 @@ class MovieForm extends Form {
       }
     }
 
-    this.props.history.push("/movies");
+    props.history.push("/movies");
   };
 
-  render() {
+  const validate = () => {
+    const options = { abortEarly: false };
+    const { error } = Joi.validate(state.data, schema, options);
+    if (!error) return null;
+
+    const errors = {};
+    for (let item of error.details) errors[item.path[0]] = item.message;
+    return errors;
+  };
+
+  const validateProperty = ({ name, value }) => {
+    const obj = { [name]: value };
+    const schema1 = { [name]: schema[name] };
+    const { error } = Joi.validate(obj, schema1);
+    return error ? error.details[0].message : null;
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const errors = validate();
+    setState({ errors: errors || {} ,
+      genres: state.genres,
+      data: state.data,
+    });
+    if (errors) return;
+
+    doSubmit();
+  };
+
+  const handleChange = ({ currentTarget: input }) => {
+    const errors = { ...state.errors };
+    const errorMessage = validateProperty(input);
+    if (errorMessage) errors[input.name] = errorMessage;
+    else delete errors[input.name];
+
+    const data = { ...state.data };
+    data[input.name] = input.value;
+
+    setState({ data, errors ,
+      genres: state.genres,
+    });
+  };
+
+  const renderSelect = (name, label, options) => {
+    const { data, errors } = state;
+
     return (
-      <div>
-        <h1>Movie Form</h1>
-        <form onSubmit={this.handleSubmit}>
-          {this.renderInput("title", "Title")}
-          {this.renderSelect("tags", "Tags", this.state.genres)}
-          {this.renderInput("description", "Director", "text")}
-          {this.renderInput("body", "Description")}
-          {this.renderButton("Save")}
-        </form>
-      </div>
+      <Select
+        name={name}
+        value={data[name]}
+        label={label}
+        options={options}
+        onChange={handleChange}
+        error={errors[name]}
+      />
     );
   }
+
+  const renderInput = (name, label, type = "text") => {
+    const { data, errors } = state;
+
+    return (
+      <Input
+        type={type}
+        name={name}
+        value={data[name]}
+        label={label}
+        onChange={(event) => handleChange(event)}
+        error={errors[name]}
+      />
+    );
+  }
+
+  const renderButton = (label) => {
+    return (
+      <button disabled={validate()} className="btn btn-primary">
+        {label}
+      </button>
+    );
+  }
+
+  return (
+        <div>
+          <h1>Movie Form</h1>
+          <form onSubmit={(event) => handleSubmit(event)}>
+            {renderInput("title", "Title")}
+            {renderSelect("tags", "Tags", state.genres)}
+            {renderInput("description", "Director", "text")}
+            {renderInput("body", "Description")}
+            {renderButton("Save")}
+          </form>
+        </div>
+      );
+
 }
 
 export default MovieForm;

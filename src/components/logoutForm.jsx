@@ -1,15 +1,12 @@
-import  { Component } from 'react';
+import  { Component, useEffect } from 'react';
 import auth from '../services/authService';
 
-class LogoutForm extends Component {
- 
-    componentDidMount() {
+function LogoutForm (){
+    useEffect(() => {
         auth.logout();
         window.location='/login';
-    }
-    render() { 
-        return null  ;
-    }
+    },[]);
+    return null  ;
 }
- 
+
 export default LogoutForm;

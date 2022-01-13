@@ -6,8 +6,12 @@ import Label from "./common/label";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
-class MoviesTable extends Component {
-  commitChanges = ( movie ) => {
+
+function MoviesTable (props) {
+
+  const { movies, onSort, sortColumn } = props;
+
+  const commitChanges = ( movie ) => {
     confirmAlert({
       title: "Delete Article",
       message: "Are you sure to delete Article?",
@@ -16,7 +20,7 @@ class MoviesTable extends Component {
           label: "Yes",
           onClick: () => {
             if (movie) {
-              this.props.onDelete(movie)
+              props.onDelete(movie)
             }
           },
         },
@@ -28,7 +32,7 @@ class MoviesTable extends Component {
     });
   };
 
-  columns = [
+  const columns = [
     {
       path: "title",
       label: "Title",
@@ -46,14 +50,14 @@ class MoviesTable extends Component {
     {
       key: "favorited",
       content: movie => (
-        <Like liked={movie.favorited} onClick={() => this.props.onLike(movie)} />
+        <Like liked={movie.favorited} onClick={() => props.onLike(movie)} />
       )
     },
     {
       key: "delete",
       content: movie => (
         <button
-          onClick={() => this.commitChanges(movie)}
+          onClick={() => commitChanges(movie)}
           className="btn btn-danger btn-sm"
         >
           Delete
@@ -62,18 +66,13 @@ class MoviesTable extends Component {
     }
   ];
 
-  render() {
-    const { movies, onSort, sortColumn } = this.props;
-    
-    return (
-      <Table
-        columns={this.columns}
-        data={movies}
-        sortColumn={sortColumn}
-        onSort={onSort}
-      />
-    );
-  }
+  return (
+    <Table
+      columns={columns}
+      data={movies}
+      sortColumn={sortColumn}
+      onSort={onSort}
+    />
+  );
 }
-
 export default MoviesTable;
